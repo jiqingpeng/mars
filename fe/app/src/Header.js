@@ -35,7 +35,7 @@ class Header extends React.Component {
   let text= this.props.file.text;
   let that = this.props.history
   client.put(file_name, file).then(function (r1) {
-    axios.post('http://127.0.0.1:7001/test',{url:'https://lonelyroad.oss-cn-beijing.aliyuncs.com/'+file_name, text:text})
+    axios.post('http://47.100.30.67:7001/test',{url:'https://lonelyroad.oss-cn-beijing.aliyuncs.com/'+file_name, text:text})
       .then(function (response) {
         that.push("/"); 
       })
