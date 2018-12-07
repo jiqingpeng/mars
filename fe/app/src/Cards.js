@@ -60,16 +60,19 @@ class Cards extends React.Component {
     axios.get('http://47.100.30.67:7001/test')
     .then(function(res){
       let dataBlob = [];
-      for (var i = 0; i < res.data.length; i++) {
+      let data = res.data.reverse();
+      data.splice(data.find(data => data.url === 'https://lonelyroad.oss-cn-beijing.aliyuncs.com/seBC8T'), 1)
+      for (var i = 0; i < data.length; i++) {
         dataBlob.push(
             <Card full key={i}>
                 <Card.Header
-                  title="This is title"
+                  title="用户"
                   thumb="https://gw.alipayobjects.com/zos/rmsportal/MRhHctKOineMbKAZslML.jpg"
                   extra={<Button size="small">+ 关注</Button>}
                 />
+                <p className="card-text">{data[i].text}</p>
                 <Card.Body>
-                  <div className="card-img"><img src={res.data[i].url}/></div>
+                  <div className="card-img"><img src={data[i].url}/></div>
                 </Card.Body>
                 <Card.Footer content="footer content" extra={<div>extra footer content</div>} />
             </Card>
