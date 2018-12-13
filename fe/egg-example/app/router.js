@@ -8,5 +8,6 @@ module.exports = app => {
   router.get('/', controller.home.render);
   // router.resources('users', '/users', controller.users);
   router.resources('test', '/test', controller.test);
+  router.resources('phone', '/phone', controller.phone);
   // router.post('/post', controller.home.create);
 };

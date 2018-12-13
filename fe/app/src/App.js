@@ -3,10 +3,12 @@ import './App.css';
 
 // import Card from './Card';
 import HomePage from './Home';
-import issuePage from './Issue';
+import IssuePage from './Issue';
 import myPage from './My';
 import Foodbar from './Foodbar';
-
+import Logo from './Logo';
+import Register from './Register';
+import Login from './Login';
 import { BrowserRouter, Route } from 'react-router-dom';
 class App extends Component {
   render() {
@@ -14,10 +16,13 @@ class App extends Component {
       <div className="App">
         <BrowserRouter>
           <div>
-            <Route path="/" exact component={HomePage} />
-            <Route path="/issue" component={issuePage} />
+            <Route path="/" exact component={Logo} /> 
+            <Route path="/Register" exact component={Register} />
+            <Route path="/Login" exact component={Login} />
+            <Route path="/home" exact component={HomePage} />
+            <Route path="/issue" component={IssuePage} />
             <Route path="/my" component={myPage} />
-            <Foodbar/>
+            {/* <Foodbar/> */}
           </div>
         </BrowserRouter>
       </div>
