@@ -61,7 +61,7 @@ class Cards extends React.Component {
     .then(function(res){
       let dataBlob = [];
       let data = res.data.reverse();
-      data.splice(data.find(data => data.url === 'https://lonelyroad.oss-cn-beijing.aliyuncs.com/seBC8T'), 1)
+      // data.splice(data.find(data => data.url === 'https://lonelyroad.oss-cn-beijing.aliyuncs.com/seBC8T'), 1)
       for (var i = 0; i < data.length; i++) {
         dataBlob.push(
             <Card full key={i}>
