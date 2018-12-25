@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import { ListView } from 'antd-mobile';
 import ImagePicker from './ImagePicker.js';
 import Header from './Header.js';
+import Foodbar from './Foodbar';
 class Issue extends React.Component {
   constructor(props) {
     // console.log(client)
@@ -24,6 +25,7 @@ class Issue extends React.Component {
       <div>
         <Header  file={this.state.file}/>
         <ImagePicker onPicker={this.printContent.bind(this)}/>
+        <Foodbar></Foodbar>
       </div>
     );
   }

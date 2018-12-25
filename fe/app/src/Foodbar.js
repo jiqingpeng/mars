@@ -2,6 +2,7 @@
 import React, { Component } from 'react';
 import { ListView } from 'antd-mobile';
 import { Link,Router} from 'react-router-dom';
+import {withRouter} from "react-router-dom";
 const data = [
   {
     img: 'https://zos.alipayobjects.com/rmsportal/dKbkpPXKfvZzWCM.png',
@@ -47,10 +48,13 @@ class Foodbar extends React.Component {
       isLoading: true,
     };
   }
+  loginState(){
+    sessionStorage.getItem("loginStatus") ? this.props.history.push("/Home") : this.props.history.push("/");
+  }
   render() {
     return (
       <div className="foodbar">
-          <Link className="bar" to="/">主页</Link>
+          <span className="bar"  onClick={()=>{this.loginState()}}>主页</span>
           <Link className="bar" to="/issue">发布</Link>
           <Link className="bar" to="/my">我的</Link>
       </div>
@@ -58,4 +62,4 @@ class Foodbar extends React.Component {
   }
 }
 
-export default Foodbar
+export default withRouter(Foodbar); 

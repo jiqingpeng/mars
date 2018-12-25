@@ -5,6 +5,7 @@ import { ListView} from 'antd-mobile';
 import List from './List';
 import Card1 from './Card';
 import Card from './Cards';
+import Foodbar from './Foodbar';
 const tabs = [
   { title: '精选' },
   { title: '动态' },
@@ -42,6 +43,7 @@ class Home extends React.Component {
     return (
       <div>
         <TabExample/>
+        <Foodbar/>
       </div>
     );
   }

@@ -5,7 +5,7 @@ import './App.css';
 import HomePage from './Home';
 import IssuePage from './Issue';
 import myPage from './My';
-import Foodbar from './Foodbar';
+
 import Logo from './Logo';
 import Register from './Register';
 import Login from './Login';
@@ -22,7 +22,7 @@ class App extends Component {
             <Route path="/home" exact component={HomePage} />
             <Route path="/issue" component={IssuePage} />
             <Route path="/my" component={myPage} />
-            {/* <Foodbar/> */}
+            
           </div>
         </BrowserRouter>
       </div>

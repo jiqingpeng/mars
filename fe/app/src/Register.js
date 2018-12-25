@@ -2,6 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import {withRouter} from "react-router-dom";
 import { List, InputItem, Toast,Button } from 'antd-mobile'; 
+
 class Register extends React.Component {
   constructor(props) {
     super(props);
@@ -63,7 +64,7 @@ class Register extends React.Component {
       Toast.info('请输入6位密码');
     }else{
       let that = this;
-      axios.post('http://127.0.0.1:7001/phone',{phone:phone,pwd:pwd})
+      axios.post('http://47.100.30.67:7001/phone',{phone:phone,pwd:pwd})
       // axios.post('http://47.100.30.67:7001/register')
         .then(function (response) {
           that.props.history.push("/"); 
@@ -76,6 +77,11 @@ class Register extends React.Component {
   render() {
     return (
       <div>
+        <div className="head">
+          <span onClick={()=>{this.props.history.push("/");}}>返回</span>
+          <span>注册</span>
+          <span></span>
+        </div>
         <List>
           <InputItem
             type="phone"

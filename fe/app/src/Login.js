@@ -9,7 +9,7 @@ class Login extends React.Component {
       hasError: false,
       haspsError: false,
       value: '182 0157 1704',
-      password:'122423'
+      password:'122424'
     }
   }
   onErrorClick = () => {
@@ -63,10 +63,13 @@ class Login extends React.Component {
       Toast.info('请输入6位密码');
     }else{
       let that = this;
-      axios.get('http://127.0.0.1:7001/phone?phone='+phone+'&pwd='+pwd)
+      axios.get('http://47.100.30.67:7001/phone?phone='+phone+'&pwd='+pwd)
       // axios.post('http://47.100.30.67:7001/Login')
         .then(function (res) {
-          that.props.history.push("/"); 
+          let callback = res.data;
+          callback.state ? that.props.history.push("/Home") : Toast.info(callback.res);
+          sessionStorage.setItem("loginStatus","true");
+          sessionStorage.setItem("phone",phone);
         })
         .catch(function (error) {
           console.log(error);
@@ -76,6 +79,11 @@ class Login extends React.Component {
   render() {
     return (
       <div>
+        <div className="head">
+        <span onClick={()=>{this.props.history.push("/");}}>返回</span>
+          <span>登陆</span>
+          <span></span>
+        </div>
         <List>
           <InputItem
             type="phone"

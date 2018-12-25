@@ -8,55 +8,53 @@ class Logo extends React.Component {
     super(props);
     this.state = {
       data:[
-        {title:'养宠板块升级',slog:'专家问答，强大工具，让爱宠健康成长',img:'AiyWuByWklrrUDlFignR'},
-        {title:'222',slog:'bbb',img: 'TekJlZRVCjLFexlOCuWn'},
-        {title:'333',slog:'bbb',img:'IJOtIlfsYdTyaDTRVrLI'}
+        {title:'社区板块升级',slog:'专家问答，强大工具，让社区成长',img:'https://lonelyroad.oss-cn-beijing.aliyuncs.com/banner/one.jpg'},
+        {title:'深夜防毒夜谈',slog:'吃了这碗狗粮再睡',img: 'https://lonelyroad.oss-cn-beijing.aliyuncs.com/banner/two.jpg'},
+        {title:'生活状态独家放送',slog:'肥宅生活不如跳舞',img:'https://lonelyroad.oss-cn-beijing.aliyuncs.com/banner/three.jpg'}
       ]
     }
   }
   componentDidMount() {
-    // simulate img loading
-    // setTimeout(() => {
-    //   this.setState({
-    //     data: ['AiyWuByWklrrUDlFignR', 'TekJlZRVCjLFexlOCuWn', 'IJOtIlfsYdTyaDTRVrLI'],
-    //   });
-    // }, 100);
+    // am-carousel
   }
- 
-
   render() {
-   
-      return (
-          <div>
+    return (
+          <div className="logowrap">
+          <div className="logo">
           <Carousel
             autoplay={false}
             infinite
             beforeChange={(from, to) => console.log(`slide from ${from} to ${to}`)}
             afterChange={index => console.log('slide to', index)}
+            style={{height:'100%'}}
           >
             {this.state.data.map(val => (
               <div
                 key={val}
-                
-                style={{display: 'inline-block', width: '100%',height:'500px'}}
+                style={{display: 'inline-block', width: '100%',height:'100%'}}
               >
-              <p style={{ width: '100%',textAlign:'center',marginTop:"20%", color:'red',fontSize:'24px'}}>{val.title}</p>
-              <p style={{ width: '100%',textAlign:'center',marginTop:"5%"}} >{val.slog}</p>
+              <p style={{ width: '100%',textAlign:'center',color:'red',marginTop:'20px',fontSize:'24px'}}>{val.title}</p>
+              <p style={{ width: '100%',textAlign:'center',margin:'10px 0'}} >{val.slog}</p>
               <img
-                src={`https://zos.alipayobjects.com/rmsportal/${val.img}.png`}
+                src={val.img}
                 alt=""
-                style={{ width: '100%', verticalAlign: 'top',height:'300px' }}
+                style={{ width: '100%', verticalAlign: 'top',height:'90%' }}
                 
               />
               </div>
             ))}
           </Carousel>
-          <Button type="warning" size="small" style={{ width: '120px',margin:"10px auto"}} onClick={()=>{
-            this.props.history.push("/Register");
-          }}>注册</Button>
-          <Button type="warning" size="small" style={{ width: '120px',margin:"10px auto"}} onClick={()=>{
-            this.props.history.push("/Login");
-          }}>登陆</Button>
+          
+          </div>
+          <div className="btn">
+            <Button type="warning" size="small" style={{ width: '120px',margin:"10px auto"}} onClick={()=>{
+              this.props.history.push("/Register");
+            }}>注册</Button>
+            <Button type="warning" size="small" style={{ width: '120px',margin:"10px auto"}} onClick={()=>{
+              this.props.history.push("/Login");
+            }}>登陆</Button>
+          </div>
+          
           </div>
         );
   }
