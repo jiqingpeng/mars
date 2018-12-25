@@ -37,7 +37,7 @@ class Header extends React.Component {
   client.put(file_name, file).then(function (r1) {
     axios.post('http://47.100.30.67:7001/test',{url:'https://lonelyroad.oss-cn-beijing.aliyuncs.com/'+file_name, text:text})
       .then(function (response) {
-        that.push("/"); 
+        that.push("/Home"); 
       })
       .catch(function (error) {
         console.log(error);
