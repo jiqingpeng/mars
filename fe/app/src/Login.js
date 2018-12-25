@@ -8,8 +8,8 @@ class Login extends React.Component {
     this.state = {
       hasError: false,
       haspsError: false,
-      value: '182 0157 1704',
-      password:'122424'
+      value: '',
+      password:''
     }
   }
   onErrorClick = () => {
