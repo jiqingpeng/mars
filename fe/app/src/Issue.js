@@ -18,7 +18,7 @@ class Issue extends React.Component {
       file:file,
       
     });
-    console.log(this.state.file)
+    console.log(this.state.file,1)
   }
   render() {
     return (
