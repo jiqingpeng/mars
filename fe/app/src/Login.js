@@ -69,7 +69,7 @@ class Login extends React.Component {
           let callback = res.data;
           callback.state ? that.props.history.push("/Home") : Toast.info(callback.res);
           sessionStorage.setItem("loginStatus","true");
-          sessionStorage.setItem("phone",phone);
+          sessionStorage.setItem("loginId",callback.res.id);
         })
         .catch(function (error) {
           console.log(error);

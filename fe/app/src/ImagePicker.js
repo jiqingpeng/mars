@@ -22,7 +22,7 @@ class ImagePicke extends React.Component {
       files:files,
       text:this.state.text
     });
-    console.log(this.state);
+    
     this.Picker(this.state);
     
   }

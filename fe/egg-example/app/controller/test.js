@@ -11,15 +11,23 @@ class TestController extends Controller {
   async index() {
     const ctx = this.ctx;
     const query = { limit: toInt(ctx.query.limit), offset: toInt(ctx.query.offset) };
-    ctx.body = await ctx.model.Test.findAll();
-    // ctx.status = 201;
+    let result = await this.app.model.Test.findAll({
+      include: [
+        {
+          model: this.app.model.Phone
+        } 
+      ]
+    });
+    ctx.body = result
+    // ctx.body = await ctx.model.Test.findAll();
+    ctx.status = 201;
   }
 
   async show() {
     const ctx = this.ctx;
     ctx.body ={aaa:1111}
     console.log(2)
-    ctx.body = await ctx.model.Test.findById(toInt(ctx.params.id));
+    // ctx.body = await ctx.model.Test.findById(toInt(ctx.params.id));
   }
 
   async create() {

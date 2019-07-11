@@ -9,67 +9,55 @@ function toInt(str) {
 class PhoneController extends Controller {
   async index() {
     const ctx = this.ctx;
-    const { phone, pwd } = this.ctx.query;
-    const phoneList = await ctx.model.Phone.findOne({
-      'where': {'phone': phone}
-    });
-    console.log(phoneList)
-    if(phoneList === null){
-      ctx.body = {res:'手机号码错误',state:false}
-    }else{
-      if(phoneList.pwd === pwd){
-        ctx.status = 201;
-        ctx.body = {
-          state:true,
-          res:phoneList
-        };
-      }else{
-        ctx.body = {res:'密码错误',state:false}
-      }
-      
-    }
+    const query = { limit: toInt(ctx.query.limit), offset: toInt(ctx.query.offset) };
+    let result = await this.app.model.Phone.findAll();
+    ctx.body = result
+    ctx.status = 201;
     
   }
   async show() {
     const ctx = this.ctx;
-    const { phone, pwd } = this.ctx.query;
-   
-
-    const phoneList = await ctx.model.Phone.findOne({
-      'where': {'phone': phone}
+    const { phone, pwd } = ctx.request.body;
+    const { id } = ctx.params;
+    // let res = await ctx.model.Phone.findById(id)
+    const state = await ctx.model.Phone.findOne({
+      where: {id}
     });
-    if(phoneList.length === 0){
-      ctx.body = {res:'手机号码错误',state:false}
-    }else{
-      if(phoneList.pwd === pwd){
-        ctx.status = 201;
-        ctx.body = {
-          state:true,
-          res:phoneList
-        };
-      }else{
-        ctx.body = {res:'密码错误',state:false}
-      }
-      
-    }
-    
+    ctx.body = state
+    // ctx.body = res
+    // console.log(phone)
   }
+  // async new() {
+  //   const ctx = this.ctx;
+  //   const { phone } = ctx.request.body;
+  //   console.log(phone)
+  //   // const { id } = this.ctx.params;
+  //   let Phone = await ctx.model.Phone.findAll(
+  //     {
+  //       where: {phone}
+  //     }
+  //   );
+  //   ctx.body = Phone
+  // }
   async create() {
     const ctx = this.ctx;
     const { phone, pwd } = ctx.request.body;
     const state = await ctx.model.Phone.findOne({
-      'where': {'phone': phone}
+      where: {phone}
     });
-    console.log(state)
+   
     if(state !== null){
-      ctx.body = {res:'此号码已被注册',state:false}
+      ctx.status = 400;
+      ctx.body = {res:'此号码已被注册',status:false}
     }else{
       const Phone = await ctx.model.Phone.create({ phone, pwd });
       ctx.status = 201;
       ctx.body = {
-        state:true,
+        status:true,
         res:Phone
       };
+      const { id } = Phone;
+      ctx.model.Info.create({ phone_id:id});
     }
   }
   async update() {
