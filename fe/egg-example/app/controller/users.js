@@ -15,23 +15,21 @@ class UserController extends Controller {
      
     // }
     // console.log(ctx.model.User)
-    ctx.body = await ctx.model.User.findAll();
+    ctx.body = await ctx.model.Users.findAll();
     // ctx.body = await ctx.model.User.findByUser('aaa');
   }
 
   async show() {
     const ctx = this.ctx;
-    
     ctx.body = await ctx.model.User.findById(toInt(ctx.params.id));
   }
 
   async create() {
     const ctx = this.ctx;
-    const { user, text } = ctx.request.body;
-    console.log(ctx.request.body)
-    const user = await ctx.model.User.create({ user, text });
+    const { name, age } = ctx.request.body;
+    const users = await ctx.model.Users.create({ name, age });
     ctx.status = 201;
-    ctx.body = user;
+    ctx.body = users;
   }
 
   // async update() {

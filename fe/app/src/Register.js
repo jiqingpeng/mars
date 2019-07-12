@@ -63,14 +63,14 @@ class Register extends React.Component {
     }else if(pwd.length!=6){
       Toast.info('请输入6位密码');
     }else{
-      let that = this;
-      axios.post('http://47.100.30.67:7001/phone',{phone:phone,pwd:pwd})
+      
+      axios.post('http://127.0.0.1:7002/phone',{phone:phone,pwd:pwd})
       // axios.post('http://47.100.30.67:7001/register')
-        .then(function (response) {
-          that.props.history.push("/"); 
+        .then((res) => {
+          this.props.history.push("/"); 
         })
-        .catch(function (error) {
-          console.log(error);
+        .catch((err) => {
+          Toast.info(err.response.data.res);
         });
     }
   }  

@@ -128,4 +128,36 @@
   text-align: center;
   padding:3% 0;
 }
+.person{
+  cursor: pointer;
+}
+.item-between{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border:1px solid red;
+}
+.person .text{
+  position:absolute;
+  top:56%;
+  font-size:18px;
+}
+.pick{
+  position: relative;
+  left:75%;
+}
+.pick .am-image-picker-list .am-image-picker-upload-btn{
+  border-radius: 50%;
+}
+.placeholder {
+  background-color: #ebebef;
+  color: #bbb;
+  text-align: center;
+  height: 30px;
+  line-height: 30px;
+  width: 100%;
+}
+/* .bgwhite{
+  background: #fff;
+} */
 

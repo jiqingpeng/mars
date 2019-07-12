@@ -47,13 +47,20 @@ class navHead extends React.Component {
     });
   }
   render() {
-    return (
+    let html = this.props.text == '个人中心' && (
       <div className="head">
         <span onClick={()=>{window.history.back()}}>返回</span>
           <span>{this.props.text}</span>
           <span></span>
         </div>
-    );
+    ) || (
+      <div className="head">
+        <span onClick={()=>{window.history.back()}}>返回</span>
+          <span>{this.props.text}</span>
+          <span className="person" onClick={()=>{this.props.history.push("/person");}}>资料</span>
+        </div>
+    )
+    return html;
 
 
 
