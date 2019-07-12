@@ -11,10 +11,10 @@ module.exports = appInfo => {
   config.sequelize = {
     dialect: 'mysql',
     host: '47.100.30.67',
-    port: 3306,
+    port: 3307,
     database: 'mysql',
     username: 'root',
-    password: '5201314jqp',
+    password: '654321',
   };
   config.security = {
     csrf: {
