@@ -2,6 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import {withRouter} from "react-router-dom";
 import { List, InputItem, Toast,Button } from 'antd-mobile'; 
+import { url } from '../src/lib/const'; 
 class Login extends React.Component {
   constructor(props) {
     super(props);
@@ -63,16 +64,20 @@ class Login extends React.Component {
       Toast.info('请输入6位密码');
     }else{
       let that = this;
-      axios.get('http://47.100.30.67:7001/phone?phone='+phone+'&pwd='+pwd)
-      // axios.post('http://47.100.30.67:7001/Login')
+      let params = {
+        phone,
+        pwd
+      }
+      
+      axios.get(url+'/phone/new?phone='+phone+'&pwd='+pwd)
         .then(function (res) {
-          let callback = res.data;
-          callback.state ? that.props.history.push("/Home") : Toast.info(callback.res);
+          let data = res.data;
+          that.props.history.push("/Home");
           sessionStorage.setItem("loginStatus","true");
-          sessionStorage.setItem("loginId",callback.res.id);
+          sessionStorage.setItem("loginId",data.res.id);
         })
-        .catch(function (error) {
-          console.log(error);
+        .catch(function (err) {
+          Toast.info(err.response.data.res)
         });
     }
   }  
