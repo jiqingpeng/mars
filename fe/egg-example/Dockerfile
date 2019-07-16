@@ -28,6 +28,6 @@ COPY . /usr/src/node-app/koa-server
 
 # 暴露容器端口
 EXPOSE 9002
-#
+
 # 启动node应用
 CMD npm start
