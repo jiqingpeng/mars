@@ -1,0 +1,35 @@
+@host = http://localhost:7002
+POST     {{host}}/phone  HTTP/1.1
+Content-Type: application/json
+
+{
+    "phone":"18201571714",
+    "pwd":"122424"
+}
+###
+PUT {{host}}/info/1  HTTP/1.1
+Content-Type: application/json
+
+{
+    "nick":"吉庆鹏",
+    "sex":
+}
+###
+GET  {{host}}/phone/15  HTTP/1.1
+Content-Type: application/json
+
+{
+    "phone":"18201571705"
+}
+###
+POST     {{host}}/info  HTTP/1.1
+Content-Type: application/json
+
+{
+    "phone_id":4,
+    "nick":"jqp",
+    "sex":1
+}
+
+###
+POST http://dummy.restapiexample.com/api/v1/create
