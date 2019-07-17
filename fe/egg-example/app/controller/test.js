@@ -12,11 +12,11 @@ class TestController extends Controller {
     const ctx = this.ctx;
     const query = { limit: toInt(ctx.query.limit), offset: toInt(ctx.query.offset) };
     let result = await this.app.model.Test.findAll({
-      include: [
-        {
-          model: this.app.model.Phone
-        } 
-      ]
+      // include: [
+      //   {
+      //     model: this.app.model.Phone
+      //   } 
+      // ]
     });
     ctx.body = result
     // ctx.body = await ctx.model.Test.findAll();

@@ -19,6 +19,7 @@ class PhoneController extends Controller {
     const ctx = this.ctx;
     const { phone, pwd } = ctx.request.body;
     const { id } = ctx.params;
+    
     // let res = await ctx.model.Phone.findById(id)
     const state = await ctx.model.Phone.findOne({
       where: {id}
@@ -27,18 +28,28 @@ class PhoneController extends Controller {
     // ctx.body = res
     // console.log(phone)
   }
-  // async new() {
-  //   const ctx = this.ctx;
-  //   const { phone } = ctx.request.body;
-  //   console.log(phone)
-  //   // const { id } = this.ctx.params;
-  //   let Phone = await ctx.model.Phone.findAll(
-  //     {
-  //       where: {phone}
-  //     }
-  //   );
-  //   ctx.body = Phone
-  // }
+  async new() {
+    const ctx = this.ctx;
+    const { phone, pwd } = ctx.query;
+    console.log(ctx.query)
+    const state = await ctx.model.Phone.findOne({
+      where: {
+        phone,
+        pwd
+      }
+    });
+    console.log(state)
+    if(!state){
+      ctx.status = 400;
+      ctx.body = {res:'账号或密码不正确',status:false}
+    }else{
+      ctx.status = 201;
+      ctx.body = {
+        status:true,
+        res:state
+      };
+    }
+  }
   async create() {
     const ctx = this.ctx;
     const { phone, pwd } = ctx.request.body;

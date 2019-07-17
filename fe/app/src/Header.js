@@ -45,7 +45,7 @@ class Header extends React.Component {
           console.log(err);
         });
       }else{
-        axios.post('http://47.100.30.67:7001/test',{url:'https://lonelyroad.oss-cn-beijing.aliyuncs.com/'+file_name, text:text})
+        axios.post(url+'/test',{url:'https://lonelyroad.oss-cn-beijing.aliyuncs.com/'+file_name, text:text})
         .then((response) => {
           this.props.history.push("/Home");
         })

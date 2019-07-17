@@ -28,6 +28,6 @@ COPY . /usr/src/node-app/koa-server
 
 # 暴露容器端口
 EXPOSE 7001
-
 # 启动node应用
 CMD npm run dev
+

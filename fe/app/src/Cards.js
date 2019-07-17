@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Card, WhiteSpace,Button  } from 'antd-mobile';
 import axios from 'axios';
+import {url} from '../src/lib/const.js';
 function genData(){
   
   const dataBlob = [];
@@ -21,7 +22,7 @@ function genData(){
   // } 
   // return dataBlob; 
   
- axios.get('http://47.100.30.67:7001/test').then(function(){
+ axios.get(url+'/test').then(function(){
     for (var i = 0; i < 10; i++) {
       dataBlob.push(
           <Card full key={i}>
@@ -57,7 +58,7 @@ class Cards extends React.Component {
   }
   genData(){
     let that =this;
-    axios.get('http://47.100.30.67:7001/test')
+    axios.get(url+'/test')
     .then(function(res){
       let dataBlob = [];
       let data = res.data.reverse();
