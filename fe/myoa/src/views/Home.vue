@@ -13,6 +13,7 @@
             text-color="#fff"
             active-text-color="#05bac5"
             router
+            style="width:100%;"
           >
             <el-submenu
               :index="item.path"
@@ -96,7 +97,7 @@ export default {
   position: fixed;
   top: 4%;
   left: 0;
-  width: 14%;
+  width: 10%;
   height: 100%;
   background: #000;
 }
@@ -112,13 +113,16 @@ export default {
 }
 .main {
   position: fixed;
-  width: 80%;
+  width: 84%;
   padding:0 3%;
-
   top: 6%;
-  left: 14%;
+  left: 10%;
   height: 100%;
 
+}
+.el-menu-item{
+  width:100%;
+  min-width: 0;
 }
 </style>
 <style lang="less">
