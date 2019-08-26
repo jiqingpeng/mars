@@ -136,7 +136,7 @@
 </template>
 
 <script>
-import addmodal from './components/add.vue';
+import addmodal from './components/add.vue'
 export default {
   name: 'user',
   data () {
