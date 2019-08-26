@@ -8,14 +8,19 @@
       width="30%"
       :close-on-click-modal="false"
     >
-      <el-form :model="form" label-width="80px">
+      <el-form
+        :model="form"
+        label-width="80px"
+      >
 
-        <el-form-item label="账号" >
-          <el-input v-model="form.phone"></el-input>
+        <el-form-item label="账号">
+          <el-input v-model="modal.phone"
+
+          :disabled="isEdit"></el-input>
         </el-form-item>
 
-        <el-form-item label="密码" >
-          <el-input v-model="form.pwd"></el-input>
+        <el-form-item label="密码">
+          <el-input v-model="modal.pwd"></el-input>
         </el-form-item>
       </el-form>
       <div
@@ -41,7 +46,8 @@ export default {
   },
   data () {
     return {
-      form: {}
+      form: {},
+      isEdit: false
     }
   },
   created () {},
@@ -52,10 +58,10 @@ export default {
   },
   methods: {
     handleSure () {
-      this.http(this.api.phone_add, null, this.form, res => {
+      this.http(this.api.phone_put, this.modal.id, this.modal, res => {
         if (res.status) {
           this.$message({
-            message: '新建成功',
+            message: '编辑成功',
             type: 'success'
           })
           this.$emit('update:dialogFormVisible', false)
@@ -68,14 +74,15 @@ export default {
       this.$emit('update:dialogFormVisible', false)
     },
 
-    submit () {
-
-    }
-
+    submit () {}
   },
   watch: {
-    dialogFormVisible (n) {
-
+    modal (n) {
+      if (n.title.indexOf('编辑') !== -1) {
+        this.isEdit = true
+      } else {
+        this.isEdit = false
+      }
     }
   }
 }

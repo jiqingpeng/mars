@@ -18,7 +18,7 @@
             label="手机号"
             style="display:flex;"
           >
-            <el-input v-model="form.name"></el-input>
+            <el-input v-model="form.phone"></el-input>
           </el-form-item>
 
         </el-form>
@@ -81,12 +81,12 @@
         <template slot-scope="scope">
           <el-button
             size="mini"
-            @click="handleEdit(scope.$index, scope.row)"
+            @click="handleEdit(scope.row)"
           >编辑</el-button>
           <el-button
             size="mini"
             type="danger"
-            @click="handleDelete(scope.$index, scope.row)"
+            @click="handleDelete(scope.row.id)"
           >删除</el-button>
         </template>
       </el-table-column>
@@ -96,11 +96,16 @@
       type="flex"
       justify="center"
       :gutter="10"
+      align="middle"
     >
+      <span style="">共{{total}}条</span>
       <el-pagination
         background
         layout="prev, pager, next"
-        :total="1000"
+        :page-size="pazeSize"
+        :total="total"
+        :current-page="currentPage"
+        @current-change="handCurrent"
       >
       </el-pagination>
     </el-row>
@@ -114,12 +119,16 @@
 
 <script>
 import addmodal from './components/add'
+
 export default {
   name: 'account',
   data () {
     return {
       tableData: [],
       form: {},
+      total: null,
+      currentPage: 0,
+      pazeSize: 5,
       modal: {
         title: '新增用户信息'
       },
@@ -127,22 +136,54 @@ export default {
     }
   },
   mounted () {
-    this.getData()
+    this.getData(this.pazeSize, this.currentPage)
   },
+  created () {},
   methods: {
-    getData () {
-      this.http(this.api.phone_get, null, null, res => {
-        this.tableData = res
+    getData (limit, offset) {
+      const { phone } = this.form
+      const query = {
+        limit,
+        offset,
+        phone
+      }
+      this.fetch(this.api.phone_get, null, query, res => {
+        this.tableData = res.data
+        this.total = res.total
       })
     },
+    handCurrent (page) {
+      this.getData(this.pazeSize, (page - 1) * this.pazeSize)
+    },
     updateInit () {
-      this.getData()
+      console.log(1111)
+      this.getData(this.pazeSize, this.currentPage)
+    },
+    handleDelete (id) {
+      this.http(this.api.phone_delete, id, null, res => {
+        this.$message({
+          message: '删除成功',
+          type: 'success'
+        })
+        this.getData()
+      })
+    },
+    handleEdit (row) {
+      this.modal = {
+        ...row,
+        title: '编辑用户信息'
+      }
+
+      this.dialogFormVisible = true
     },
     handleAdd () {
+      this.modal = {
+        title: '新增用户信息'
+      }
       this.dialogFormVisible = true
     },
     handleSearch () {
-      this.getData()
+      this.getData(this.pazeSize, this.currentPage)
     }
   },
   components: {

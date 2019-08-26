@@ -1,21 +1,43 @@
 import axios from 'axios'
 import Vue from 'vue'
 let v = new Vue()
+
 const http = (api, id, data = {}, cb) => {
-  console.log(api)
-  let url = ' '
+  let url = 'http://127.0.0.1:7001/'
+
   if (id === null) {
-    url = 'http://47.100.30.67:7001/' + api.path
+    url = url + api.path
   } else {
-    url = 'http://47.100.30.67:7001/' + api.path + '/' + id
+    url = url + api.path + '/' + id
   }
-  axios({url: url, method: api.method, data}).then(res => {
-    cb && cb(res.data)
-  }).catch((err) => {
-    v.$message({
-      message: err.response.data.res,
-      type: 'warning'
+  axios({url: url, method: api.method, data: data})
+    .then(res => {
+      cb && cb(res.data)
     })
-  })
+    .catch(err => {
+      v.$message({
+        message: err.response.data.res,
+        type: 'warning'
+      })
+    })
 }
-export { http }
+const fetch = (api, id, data = {}, cb) => {
+  let url = 'http://127.0.0.1:7001/'
+
+  if (id === null) {
+    url = url + api.path
+  } else {
+    url = url + api.path + '/' + id
+  }
+  axios({url: url, method: api.method, params: data})
+    .then(res => {
+      cb && cb(res.data)
+    })
+    .catch(err => {
+      v.$message({
+        message: err.response.data.res,
+        type: 'warning'
+      })
+    })
+}
+export {http, fetch}

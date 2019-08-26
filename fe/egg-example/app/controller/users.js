@@ -12,7 +12,7 @@ class UserController extends Controller {
     const ctx = this.ctx;
     const query = { limit: toInt(ctx.query.limit), offset: toInt(ctx.query.offset) };
     // ctx.body = {
-     
+
     // }
     // console.log(ctx.model.User)
     ctx.body = await ctx.model.Users.findAll();
