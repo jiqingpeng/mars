@@ -6,7 +6,7 @@ ADD . /app/
 #进入到app目录下面，类似cd
 WORKDIR /app
 #安装依赖
-RUN npm install
+RUN npm i --registry=https://registry.npm.taobao.org
 # 暴露容器端口
 EXPOSE 9001
 # 启动node应用
