@@ -1,14 +1,16 @@
-#制定node镜像的版本
-FROM node:8.9-alpine
+FROM nginx:1.13.6-alpine
+LABEL maintainer="lilywang <lilywang.cd@gmail.com>"
 
-#移动当前目录下面的文件到app目录下
-ADD . /app/
-#进入到app目录下面，类似cd
-WORKDIR /app
-#安装依赖
-RUN npm i --registry=https://registry.npm.taobao.org
-# 暴露容器端口
-EXPOSE 9001
-# 启动node应用
-CMD npm run dev
+ARG TZ="Asia/Shanghai"
 
+ENV TZ ${TZ}
+
+RUN apk upgrade --update \
+    && apk add bash tzdata \
+    && ln -sf /usr/share/zoneinfo/${TZ} /etc/localtime \
+    && echo ${TZ} > /etc/timezone \
+    && rm -rf /var/cache/apk/*
+
+COPY dist /usr/share/nginx/html
+
+CMD ["nginx", "-g", "daemon off;"]
