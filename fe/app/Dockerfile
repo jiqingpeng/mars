@@ -11,6 +11,6 @@ RUN apk upgrade --update \
     && echo ${TZ} > /etc/timezone \
     && rm -rf /var/cache/apk/*
 
-COPY dist /usr/share/nginx/html 
+COPY public /usr/share/nginx/html 
 
 CMD ["nginx", "-g", "daemon off;"]
