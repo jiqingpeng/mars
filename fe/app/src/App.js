@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import './App.css';
 
 // import Card from './Card';
@@ -11,14 +11,14 @@ import Login from './Login';
 import Person from './Person';
 import HeadPortrait from './HeadPortrait';
 import Textarea from '../src/comments/Textarea';
-import { BrowserRouter, Route } from 'react-router-dom';
+import {HashRouter, Route} from 'react-router-dom';
 class App extends Component {
-  render() {
+  render () {
     return (
       <div className="App">
-        <BrowserRouter>
+        <HashRouter>
           <div>
-            <Route path="/" exact component={Logo} /> 
+            <Route path="/" exact component={Logo} />
             <Route path="/Register" exact component={Register} />
             <Route path="/Login" exact component={Login} />
             <Route path="/Person" exact component={Person} />
@@ -28,7 +28,7 @@ class App extends Component {
             <Route path="/headportrait" component={HeadPortrait} />
             <Route path="/textarea" component={Textarea} />
           </div>
-        </BrowserRouter>
+        </HashRouter>
       </div>
     );
   }

@@ -29,5 +29,6 @@
   ],
   "devDependencies": {
     "react-app-rewired": "^1.6.2"
-  }
+  },
+  "homepage": "."
 }
