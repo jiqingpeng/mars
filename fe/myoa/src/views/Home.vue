@@ -5,7 +5,7 @@
         <el-col>
 
           <el-menu
-            default-active="/user"
+            default-active="/user/info"
             class="el-menu-vertical-demo"
             @open="handleOpen"
             @close="handleClose"
@@ -60,7 +60,7 @@
 </template>
 
 <script>
-import { menuRouter } from '../router/index'
+import { menuRouter } from '../router/index';
 export default {
   name: 'Home',
   data () {
@@ -114,14 +114,13 @@ export default {
 .main {
   position: fixed;
   width: 84%;
-  padding:0 3%;
+  padding: 0 3%;
   top: 6%;
   left: 10%;
   height: 100%;
-
 }
-.el-menu-item{
-  width:100%;
+.el-menu-item {
+  width: 100%;
   min-width: 0;
 }
 </style>

@@ -14,30 +14,31 @@ const menuRouter = [
     name: 'user',
     icon: 'el-icon-place',
     component: () => import('@/views/Home.vue'),
+    redirect: '/user/info',
     children: [
       {
-        path: '/user',
+        path: '/user/info',
         title: '用户信息',
-        name: 'user',
+        name: 'userinfo',
         component: () => import('@/views/User/User.vue')
       }
     ]
-  }, {
+  },
+  {
     path: '/account',
     title: '账户',
     name: 'account',
     icon: 'el-icon-tickets',
     component: () => import('@/views/Home.vue'),
+    redirect: 'account/info',
     children: [
       {
-        path: '/account',
+        path: '/account/info',
         title: '账户信息',
-        name: 'account',
+        name: 'accountinfo',
         component: () => import('@/views/Account/Account.vue')
-
       }
     ]
-
   }
 ]
 

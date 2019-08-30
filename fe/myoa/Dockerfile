@@ -1,6 +1,6 @@
-#1111111
+
 FROM nginx:1.13.6-alpine
-LABEL maintainer="lilywang <lilywang.cd@gmail.com>"
+LABEL maintainer="jiqingpeng <jiqingpeng.dding.cn>"
 
 ARG TZ="Asia/Shanghai"
 
