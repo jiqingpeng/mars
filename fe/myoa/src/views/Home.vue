@@ -60,7 +60,7 @@
 </template>
 
 <script>
-import { menuRouter } from '../router/index';
+import { menuRouter } from '../router/index'
 export default {
   name: 'Home',
   data () {
