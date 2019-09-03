@@ -58,16 +58,30 @@ export default {
   },
   methods: {
     handleSure () {
-      this.http(this.api.phone_put, this.modal.id, this.modal, res => {
-        if (res.status) {
-          this.$message({
-            message: '编辑成功',
-            type: 'success'
-          })
-          this.$emit('update:dialogFormVisible', false)
-          this.$emit('updateInit')
-        }
-      })
+      if (this.isEdit) {
+        this.http(this.api.phone_put, this.modal.id, this.modal, res => {
+          if (res.status) {
+            this.$message({
+              message: '编辑成功',
+              type: 'success'
+            })
+            this.$emit('update:dialogFormVisible', false)
+            this.$emit('updateInit')
+          }
+        })
+      } else {
+        this.http(this.api.phone_add, null, this.modal, res => {
+          if (res.status) {
+            this.$message({
+              message: '新增成功',
+              type: 'success'
+            })
+            this.$emit('update:dialogFormVisible', false)
+            this.$emit('updateInit')
+          }
+        })
+      }
+
       // this.$emit('update:dialogFormVisible', false)
     },
     handleCancel () {
