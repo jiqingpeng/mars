@@ -119,10 +119,11 @@ export default {
   left: 10%;
   height: 100%;
 }
-.el-menu-item {
+.el-submenu .el-menu-item {
   width: 100%;
-  min-width: 0;
+  min-width: 100px;
 }
+
 </style>
 <style lang="less">
 </style>
