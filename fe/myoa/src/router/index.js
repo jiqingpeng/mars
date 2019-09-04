@@ -26,7 +26,7 @@ const menuRouter = [
   },
   {
     path: '/account',
-    title: '账户',
+    title: '账号',
     name: 'account',
     icon: 'el-icon-tickets',
     component: () => import('@/views/Home.vue'),
@@ -34,9 +34,25 @@ const menuRouter = [
     children: [
       {
         path: '/account/info',
-        title: '账户信息',
+        title: '账号信息',
         name: 'accountinfo',
         component: () => import('@/views/Account/Account.vue')
+      }
+    ]
+  },
+  {
+    path: '/article',
+    title: '文章',
+    name: 'article',
+    icon: 'el-icon-tickets',
+    component: () => import('@/views/Home.vue'),
+    redirect: 'article/info',
+    children: [
+      {
+        path: '/article/info',
+        title: '文章信息',
+        name: 'articleinfo',
+        component: () => import('@/views/Article/Article.vue')
       }
     ]
   }

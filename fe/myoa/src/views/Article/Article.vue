@@ -109,16 +109,16 @@
       >
       </el-pagination>
     </el-row>
-    <addmodal
+    <!-- <addmodal
       :dialogFormVisible.sync="dialogFormVisible"
       @updateInit="updateInit"
       :modal="modal"
-    ></addmodal>
+    ></addmodal> -->
   </div>
 </template>
 
 <script>
-import addmodal from './components/add'
+// import addmodal from './components/add'
 
 export default {
   name: 'account',
@@ -156,6 +156,7 @@ export default {
       this.getData(this.pazeSize, (page - 1) * this.pazeSize)
     },
     updateInit () {
+      console.log(1111)
       this.getData(this.pazeSize, this.currentPage)
     },
     handleDelete (id) {
@@ -164,7 +165,7 @@ export default {
           message: '删除成功',
           type: 'success'
         })
-        this.getData(this.pazeSize, this.currentPage)
+        this.getData()
       })
     },
     handleEdit (row) {
@@ -184,10 +185,10 @@ export default {
     handleSearch () {
       this.getData(this.pazeSize, this.currentPage)
     }
-  },
-  components: {
-    addmodal
   }
+//   components: {
+//     addmodal
+//   }
 }
 </script>
 <style lang="less" scoped>
