@@ -72,6 +72,18 @@
         label="创建时间"
         align="center"
       >
+       <template slot-scope="scope">
+          {{dayjs(scope.row.created_at).format('YYYY-MM-DD HH:mm:ss')}}
+        </template>
+      </el-table-column>
+      <el-table-column
+        prop="updated_at"
+        label="更新时间"
+        align="center"
+      >
+        <template slot-scope="scope">
+          {{dayjs(scope.row.updated_at).format('YYYY-MM-DD HH:mm:ss')}}
+        </template>
       </el-table-column>
       <el-table-column
         label="操作"
@@ -119,7 +131,7 @@
 
 <script>
 import addmodal from './components/add'
-
+import dayjs from 'dayjs'
 export default {
   name: 'account',
   data () {
@@ -128,11 +140,16 @@ export default {
       form: {},
       total: null,
       currentPage: 0,
-      pazeSize: 5,
+      pazeSize: 10,
       modal: {
         title: '新增用户信息'
       },
       dialogFormVisible: false
+    }
+  },
+  computed: {
+    dayjs () {
+      return dayjs
     }
   },
   mounted () {

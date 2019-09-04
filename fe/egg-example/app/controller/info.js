@@ -22,7 +22,7 @@ class InfoController extends Controller {
     const ctx = this.ctx;
     let {offset, limit, sex, nick} = ctx.query;
     const where = filterJson ({sex, nick});
-    console.log (where);
+    
     offset = toInt (offset);
     limit = toInt (limit);
     let total = null;
@@ -32,6 +32,11 @@ class InfoController extends Controller {
       result = await this.app.model.Info.findAll ({
         offset,
         limit,
+        include: [
+          {
+            model: this.app.model.Phone
+          }
+        ]
       });
     } else {
       total = (await this.app.model.Info.findAll ({
@@ -41,6 +46,11 @@ class InfoController extends Controller {
         offset,
         limit,
         where: where,
+        include: [
+        {
+          model: this.app.model.Phone
+        }
+      ]
       });
     }
 

@@ -7,8 +7,7 @@ module.exports = app => {
       phone: STRING(30),
       pwd: STRING(30),
     },{
-      timestamps: false,  //去除createAt updateAt
-      freezeTableName: true,  //使用自定义表名
+     freezeTableName: true,  //使用自定义表名
     },
   // {underscored: true}
   );

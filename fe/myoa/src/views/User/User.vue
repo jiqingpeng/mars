@@ -64,7 +64,7 @@
       <el-table-column
         prop="head_url"
         label="头像地址"
-        width=480
+        width=400
         align="center"
       >
       </el-table-column>
@@ -72,6 +72,7 @@
         prop="nick"
         label="昵称"
         align="center"
+        width=180
       >
       </el-table-column>
       <el-table-column
@@ -87,18 +88,28 @@
         prop="phone.phone"
         label="手机号"
         align="center"
+        width=180
       >
       </el-table-column>
       <el-table-column
         prop="created_at"
         label="创建时间"
         align="center"
+         width=280
+      >
+      </el-table-column>
+      <el-table-column
+        prop="updated_at"
+        label="更新时间"
+        align="center"
+        width=280
       >
       </el-table-column>
       <el-table-column
         label="操作"
         align="center"
-        width=280
+        width=120
+        fixed="right"
       >
         <template slot-scope="scope">
           <el-button
@@ -137,6 +148,7 @@
 
 <script>
 import addmodal from './components/add.vue'
+import dayjs from 'dayjs'
 export default {
   name: 'user',
   data () {
@@ -149,7 +161,7 @@ export default {
       dialogFormVisible: false,
       total: null,
       currentPage: 0,
-      pazeSize: 5
+      pazeSize: 10
     }
   },
   mounted () {
@@ -166,12 +178,16 @@ export default {
         nick
       }
       this.fetch(this.api.info_get, null, query, res => {
-        this.tableData = res.data
+        this.tableData = res.data.map(item => {
+          item.created_at = dayjs(item.created_at).format('YYYY-MM-DD HH:mm:ss')
+          item.updated_at = dayjs(item.updated_at).format('YYYY-MM-DD HH:mm:ss')
+          return item
+        })
         this.total = res.total
       })
     },
     updateInit () {
-      this.getData()
+      this.getData(this.pazeSize, this.currentPage)
     },
     handleEdit (row) {
       this.modal = {
