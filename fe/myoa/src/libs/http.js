@@ -23,9 +23,9 @@ const http = (api, id, data = {}, cb) => {
 const fetch = (api, id, data = {}, cb) => {
   let url = ''
   if (id === null) {
-    url = url + api.path
+    url = baseUrl + api.path
   } else {
-    url = url + api.path + '/' + id
+    url = baseUrl + api.path + '/' + id
   }
 
   axios({url: url, method: api.method, params: data})
