@@ -1,10 +1,8 @@
 import axios from 'axios'
 import Vue from 'vue'
 let v = new Vue()
-
+let url = 'http://47.100.30.67:7001/'
 const http = (api, id, data = {}, cb) => {
-  // let url = 'http://47.100.30.67:7001/'
-  let url = 'http://127.0.0.1:7001/'
   if (id === null) {
     url = url + api.path
   } else {
@@ -22,9 +20,6 @@ const http = (api, id, data = {}, cb) => {
     })
 }
 const fetch = (api, id, data = {}, cb) => {
-  // let url = 'http://47.100.30.67:7001/'
-  let url = 'http://127.0.0.1:7001/'
-
   if (id === null) {
     url = url + api.path
   } else {
