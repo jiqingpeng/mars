@@ -1,12 +1,13 @@
 import axios from 'axios'
 import Vue from 'vue'
 let v = new Vue()
-let url = 'http://47.100.30.67:7001/'
+const baseUrl = 'http://47.100.30.67:7001/'
 const http = (api, id, data = {}, cb) => {
+  let url = ''
   if (id === null) {
-    url = url + api.path
+    url = baseUrl + api.path
   } else {
-    url = url + api.path + '/' + id
+    url = baseUrl + api.path + '/' + id
   }
   axios({url: url, method: api.method, data: data})
     .then(res => {
@@ -20,6 +21,7 @@ const http = (api, id, data = {}, cb) => {
     })
 }
 const fetch = (api, id, data = {}, cb) => {
+  let url = ''
   if (id === null) {
     url = url + api.path
   } else {
