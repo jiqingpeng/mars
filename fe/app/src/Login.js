@@ -63,16 +63,14 @@ class Login extends React.Component {
     }else if(pwd.length!=6){
       Toast.info('请输入6位密码');
     }else{
-      let that = this;
-      let params = {
+      const params = {
         phone,
         pwd
       }
-      
-      axios.get(url+'/phone/new?phone='+phone+'&pwd='+pwd)
-        .then(function (res) {
+      axios.get(url+'/phone/new',{params:params})
+        .then((res) =>{
           let data = res.data;
-          that.props.history.push("/Home");
+          this.props.history.push("/Home");
           sessionStorage.setItem("loginStatus","true");
           sessionStorage.setItem("loginId",data.res.id);
         })

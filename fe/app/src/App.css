@@ -1,154 +1,191 @@
-*{
-  margin:0;
-  padding:0;
+* {
+  margin: 0;
+  padding: 0;
 }
-.App{
+
+.App {
   position: relative;
-  width:100%;
+  width: 100%;
   overflow: hidden;
 }
-.wrap{
+
+.wrap {
   position: relative;
 }
-.tab-item{
+
+.tab-item {
   height: 100%;
-  background:#fff;
-  margin-top:43px;
+  background: #fff;
+  margin-top: 43px;
 }
-.card-wrap{
+
+.card-wrap {
   display: flex;
   width: 100%;
-  flex-wrap:wrap;
+  flex-wrap: wrap;
 }
-.card{
-  width:46%;
-  margin:2%;
+
+.card {
+  width: 46%;
+  margin: 2%;
 }
-.card img{
-  width:100%;
-  
+
+.card img {
+  width: 100%;
+
   border-radius: 4%;
 }
-.am-tabs-default-bar-content{
+
+.am-tabs-default-bar-content {
   position: fixed;
-  background:#fff;
+  background: #fff;
 }
-.card-img{
-  width:100%;
-  /* height: 400px; */
+
+.card-img {
+  width: 100%;
+  height: 400px;
 }
-.card-text{
-  padding:2px 15px;
+
+.card-text {
+  padding: 2px 15px;
 }
-.card-img img{
+
+.card-img img {
   width: 100%;
   height: 100%;
 }
-.foodbar{
+.card-box{
+  border:1px solid red;
+  /* height:100%; */
+  overflow-y: scroll;
+}
+.foodbar {
   position: fixed;
-  bottom:0px;
+  bottom: 0px;
   width: 100%;
   display: flex;
-  background:#fff;
+  background: #fff;
 }
-.foodbar .bar{
-  flex:1;
+
+.foodbar .bar {
+  flex: 1;
 }
-.foodbar .bar{
+
+.foodbar .bar {
   height: 40px;
   line-height: 40px;
   text-align: center;
 }
-.am-card-header-extra{
-  width:30%;
+
+.am-card-header-extra {
+  width: 30%;
 }
-.text{
-  width:100%;
+
+.text {
+  width: 100%;
   height: 100px;
-  border:none;
+  border: none;
 }
-.head{
-  width:96%;
-  padding:0 2%;
-  height:40px;
+
+.head {
+  width: 96%;
+  padding: 0 2%;
+  height: 40px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background:red;
-  color:#fff;
+  background: red;
+  color: #fff;
 }
-.logowrap{
+
+.logowrap {
   position: fixed;
   width: 100%;
   height: 100%;
-  
+
 }
-.logo{
+
+.logo {
   position: fixed;
-  width:100%;
+  width: 100%;
   height: 85%;
-  
+
 }
-.am-carousel{
+
+.am-carousel {
   position: fixed;
   width: 100%;
 }
-.slider-frame{
+
+.slider-frame {
   height: 100% !important;
 }
-.slider-list{
+
+.slider-list {
   height: 100% !important;
 }
-.slider-slide{
+
+.slider-slide {
   height: 100% !important;
 }
-.btn{
+
+.btn {
   position: fixed;
   width: 100%;
   height: 15%;
-  bottom:0;
+  bottom: 0;
 }
-.icon{
-  background:#fff;
+
+.icon {
+  background: #fff;
 }
-.icon-img{
+
+.icon-img {
   display: flex;
-  align-items:center;
+  align-items: center;
   justify-content: center;
-  
+
 }
-.icon-img img{
-  background:#f1f1f1;
-  width:100px;
+
+.icon-img img {
+  background: #f1f1f1;
+  width: 100px;
   height: 100px;
   border-radius: 50%;
-  margin:5% 0;
+  margin: 5% 0;
 }
-.icon-text{
+
+.icon-text {
   text-align: center;
-  padding:3% 0;
+  padding: 3% 0;
 }
-.person{
+
+.person {
   cursor: pointer;
 }
-.item-between{
+
+.item-between {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border:1px solid red;
+  border: 1px solid red;
 }
-.person .text{
-  position:absolute;
-  top:56%;
-  font-size:18px;
+
+.person .text {
+  position: absolute;
+  top: 56%;
+  font-size: 18px;
 }
-.pick{
+
+.pick {
   position: relative;
-  left:75%;
+  left: 75%;
 }
-.pick .am-image-picker-list .am-image-picker-upload-btn{
+
+.pick .am-image-picker-list .am-image-picker-upload-btn {
   border-radius: 50%;
 }
+
 .placeholder {
   background-color: #ebebef;
   color: #bbb;
@@ -157,7 +194,7 @@
   line-height: 30px;
   width: 100%;
 }
+
 /* .bgwhite{
   background: #fff;
 } */
-

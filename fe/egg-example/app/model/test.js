@@ -8,12 +8,13 @@ module.exports = app => {
     text: STRING(30),
     // phone_id:{ type: INTEGER}
   },{
-    timestamps: false,  //去除createAt updateAt
+    // timestamps: false,  //去除createAt updateAt
     freezeTableName: true,  //使用自定义表名
   });
-  // Test.associate = function() {
-  //   Test.belongsTo(app.model.Phone);
-  //   // app.model.Test.hasMany(app.model.Family, { foreignKey: 'userId', targetKey: 'id' });
-  // }
+  Test.associate = function() {
+    Test.belongsTo(app.model.Info);
+    Test.belongsTo(app.model.Phone);
+    
+  }
   return Test;
 };

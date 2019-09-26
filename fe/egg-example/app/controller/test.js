@@ -8,21 +8,69 @@ function toInt(str) {
 }
 
 class TestController extends Controller {
-  async index() {
+  
+  async index () {
     const ctx = this.ctx;
-    const query = { limit: toInt(ctx.query.limit), offset: toInt(ctx.query.offset) };
-    const result = await this.app.model.Test.findAll({
-      // include: [
-      //   {
-      //     model: this.app.model.Phone
-      //   }
-      // ]
-    });
-    ctx.body = result;
-    // ctx.body = await ctx.model.Test.findAll();
+    let {offset, limit, phone_id} = ctx.query;
+    const where = {phone_id};
+    offset = toInt (offset);
+    limit = toInt (limit);
+    let total = null;
+    let result = null;
+    if (JSON.stringify (where) === '{}') {
+      total = (await this.app.model.Test.findAll ({})).length;
+      result = await this.app.model.Test.findAll ({
+        offset,
+        limit,
+        order:[['created_at', 'DESC']],
+        include: [
+          {
+            model: this.app.model.Phone,
+            attributes: ['phone'],
+          },
+          {
+            model: this.app.model.Info
+          }
+        ]
+      });
+      
+    } else {
+      total = (await this.app.model.Test.findAll ({
+        where: {phone_id},
+        order:[['created_at', 'DESC']],
+        include: [
+          {
+            model: this.app.model.Phone,
+            attributes: ['phone'],
+          },
+          {
+            model: this.app.model.Info
+          }
+        ]
+      })).length;
+      result = await this.app.model.Test.findAll ({
+        offset,
+        limit,
+        where: {phone_id},
+        order:[['created_at', 'DESC']],
+        include: [
+          {
+            model: this.app.model.Phone,
+            attributes: ['phone'],
+          },
+          {
+            model: this.app.model.Info
+          }
+        ]
+      });
+    }
+
+    ctx.body = {
+      data: result,
+      total,
+    };
     ctx.status = 201;
   }
-
   async show() {
     const ctx = this.ctx;
     ctx.body = { aaa: 1111 };
