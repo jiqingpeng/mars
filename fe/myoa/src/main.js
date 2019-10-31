@@ -7,6 +7,7 @@ import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 import {http, fetch} from '../src/libs/http.js'
 import api from '../src/libs/api.js'
+import store from './store'
 Vue.use(ElementUI)
 
 Vue.prototype.http = http
@@ -17,6 +18,7 @@ Vue.config.productionTip = false
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
+  store,
   router,
   components: {App},
   template: '<App/>'

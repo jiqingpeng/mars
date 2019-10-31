@@ -13,6 +13,7 @@ const http = (api, id, data = {}, cb) => {
     .then(res => {
       cb && cb(res.data)
     })
+
     .catch(err => {
       v.$message({
         message: err.response.data.res,
@@ -32,6 +33,7 @@ const fetch = (api, id, data = {}, cb) => {
     .then(res => {
       cb && cb(res.data)
     })
+
     .catch(err => {
       console.log(err)
       v.$message({

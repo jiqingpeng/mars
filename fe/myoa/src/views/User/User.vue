@@ -149,6 +149,7 @@
 <script>
 import addmodal from './components/add.vue'
 import dayjs from 'dayjs'
+import { mapState, mapMutations } from 'vuex'
 export default {
   name: 'user',
   data () {
@@ -166,8 +167,22 @@ export default {
   },
   mounted () {
     this.getData(this.pazeSize, this.currentPage)
+    // console.log(this.count)
+    // console.log(this.$store.getters.count2)
+    // this.$store.commit('increment', {num: 10})
+    this.increment({num: 10})
+    console.log(this.count)
+  },
+  computed: {
+    ...mapState({
+      count: state => state.count
+    })
   },
   methods: {
+    ...mapMutations([
+      'increment' // 将 `this.increment()` 映射为 `this.$store.commit('increment')`
+
+    ]),
     getData (limit, offset) {
       const { sex, phone, nick } = this.form
       const query = {
@@ -177,6 +192,7 @@ export default {
         sex,
         nick
       }
+
       this.fetch(this.api.info_get, null, query, res => {
         this.tableData = res.data.map(item => {
           item.created_at = dayjs(item.created_at).format('YYYY-MM-DD HH:mm:ss')

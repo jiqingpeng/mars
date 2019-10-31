@@ -140,6 +140,7 @@ export default {
   },
   created () {},
   methods: {
+
     getData (limit, offset) {
       const { phone } = this.form
       const query = {

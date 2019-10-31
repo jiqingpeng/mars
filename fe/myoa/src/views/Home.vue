@@ -74,7 +74,7 @@ export default {
     // }
   },
   created () {
-    console.log(menuRouter)
+    // console.log(menuRouter)
   },
 
   methods: {
