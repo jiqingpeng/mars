@@ -14,7 +14,7 @@ Vue.prototype.http = http
 Vue.prototype.fetch = fetch
 Vue.prototype.api = api
 Vue.config.productionTip = false
-
+console.log(process.env.NODE_ENV, 2)
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
